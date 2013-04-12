@@ -7,13 +7,13 @@ ln -fs $HOME/dotfiles/vimshell    $HOME/.vimshell
 ln -fs $HOME/dotfiles/zshrc       $HOME/.zshrc
 ln -fs $HOME/dotfiles/irbrc       $HOME/.irbrc
 
-cat >> $HOME/.ssh/config << EOS
-Host github.com
- User git
- Hostname github.com
- PreferredAuthentications publickey
- IdentityFile ~/.ssh/github
-EOS
+#cat >> $HOME/.ssh/config << EOS
+#Host github.com
+# User git
+# Hostname github.com
+# PreferredAuthentications publickey
+# IdentityFile ~/.ssh/github
+#EOS
 
 
 mkdir -p ~/.vim/bundle
