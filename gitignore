@@ -1,0 +1,8 @@
+*
+!.vim/
+!.vimshell/
+!.vimrc
+!.zshrc
+!.tmuxrc.conf
+!.gitignore
+vim/bundle

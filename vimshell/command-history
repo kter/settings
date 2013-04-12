@@ -1,0 +1,37 @@
+/usr/local/pgsql/bin/psql -U postgres esailine_development
+ruby script/win_mail_send.rb development
+ruby script/runner "Winner.create_winner_record(['ttakahashi@up-frontier.jp', 'ttakahashi2@up-frontier.jp'])"
+tail -f log/development.log
+tail -f log/development
+less log/development.log
+ls -la log
+touch log/mail.log
+less log/development.lo
+hostname
+ruby script/runner "Winner.create_winner_record('ttakahashi@up-frontier.jp', 'ttakahashi2@up-frontier.jp')"
+ruby script/runner "Winner.create_winner_record('ttakahashi@up-frontier.jp')"
+ruby
+ruby script/runner "Winner.create_winner_record(ttakahashi@up-frontier.jp, ttakahashi2@up-frontier.jp)"
+less app/views/serial/_form.html.erb
+less app/views/serial/form.html.erb
+pwd
+rake db:create
+ls
+ls app/views/shared/
+mv -v app/views/shared/_sitecatalyst.html.erb app/views/shared/_sitecatalyst.html.erb.org
+rake routes
+vim
+top
+date
+ssh localhost
+sudo su
+exit
+a
+/bin/zsh
+cd ttakahashi
+cd base_rc
+cd /home/
+df -h
+f
+dir
+dif

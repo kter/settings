@@ -1,0 +1,9 @@
+:q
+
+cd /
+0
+pwd
+cd
+clear
+exit
+chsh
