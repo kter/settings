@@ -11,7 +11,7 @@ highlight LineNr ctermfg=DarkCyan
 function! g:Date()
     return strftime("%x %H:%M")
 endfunction
-set statusline=%F%m%r%h%w\%=[type=%Y]\[format=%{&ff}]\[enc=%{&fileencoding}]\[low=%l/%L]\ \%{g:Date()}
+set statusline=%F%m%r%h%w\%=\ %Y\ \%{&ff}\ \%{&fileencoding}\ \%l/%L\ \ \%{g:Date()}
 
 
 """"""""""""""""""""""""""""""
