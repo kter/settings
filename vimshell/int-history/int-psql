@@ -1,0 +1,7 @@
+select * from winners where id = 14;
+\d winners
+select * from winners;
+
+esailine_development=# select * from winners where id = 14;
+select * from winners where id = 14:
+\d
