@@ -27,3 +27,4 @@ cd $HOME/.vim/bundle/neobundle.vim && cp -r autoload/ doc/ plugin/ $HOME/.vim
 cd $HOME/.vim/bundle/vimproc && make -f make_unix.mak
 
 echo "execute :NeoBundleInstall in vim"
+
