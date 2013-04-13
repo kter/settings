@@ -20,6 +20,7 @@ mkdir -p $HOME/.vim/bundle
 git clone git://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
 git clone https://github.com/szw/vim-tags.git $HOME/.vim/bundle/vim-tags
 git clone git://github.com/Shougo/vimshell.git $HOME/.vim/bundle/vimshell
+git clone git://github.com/Shougo/vimproc.git $HOME/.vim/bundle/vimproc
 
 cd $HOME/.vim/bundle/vimshell && cp -r autoload/ doc/ plugin/ syntax/ $HOME/.vim 
 cd $HOME/.vim/bundle/neobundle.vim && cp -r autoload/ doc/ plugin/ $HOME/.vim 
