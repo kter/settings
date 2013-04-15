@@ -170,3 +170,4 @@ NeoBundle 'szw/vim-tags'
 set tabstop=2
 set shiftwidth=2
 set expandtab
+map <C-N> :VimFiler -split -simple -winwidth=35 -no-quit
