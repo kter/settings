@@ -172,4 +172,4 @@ set shiftwidth=2
 set expandtab
 map <C-N> :VimFiler -split -simple -winwidth=35 -no-quit
 let g:vimfiler_as_default_explorer = 1
-map <C-M> :Unite buffer -winheight=10 -no-quit -no-focus
+map <C-M> :buffers
