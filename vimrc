@@ -11,7 +11,8 @@ highlight LineNr ctermfg=DarkCyan
 function! g:Date()
     return strftime("%x %H:%M")
 endfunction
-set statusline=%F%m%r%h%w\%=\ %Y\ \%{&ff}\ \%{&fileencoding}\ \%l/%L\ \ \%{g:Date()}
+set statusline=%F%m%r%h%w\%=\ %Y\ \%{&ff}\ \%{&fileencoding}\ \%l/%L
+"set statusline=%F%m%r%h%w\%=\ %Y\ \%{&ff}\ \%{&fileencoding}\ \%l/%L\ \ \%{g:Date()}
 
 
 """"""""""""""""""""""""""""""
@@ -170,6 +171,6 @@ NeoBundle 'szw/vim-tags'
 set tabstop=2
 set shiftwidth=2
 set expandtab
-map <C-N> :VimFiler -split -simple -winwidth=35 -no-quit
+map <C-N> :VimFiler -split -simple -winwidth=35 -no-quit<CR>
 let g:vimfiler_as_default_explorer = 1
-map <C-M> :buffers
+map <C-M> :buffers<CR>
