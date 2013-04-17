@@ -174,3 +174,52 @@ set expandtab
 map <C-N> :VimFiler -split -simple -winwidth=35 -no-quit<CR>
 let g:vimfiler_as_default_explorer = 1
 map <C-M> :buffers<CR>
+
+let g:neocomplcache_enable_at_startup = 1
+
+
+" source from https://gist.github.com/taichouchou2/4521428
+"------------------------------------
+" neocomplcache
+"------------------------------------
+" 補完・履歴 neocomplcache "{{{
+set infercase
+ 
+"----------------------------------------
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
+ 
+" default config"{{{
+let g:neocomplcache_force_overwrite_completefunc = 1
+let g:neocomplcache#sources#rsense#home_directory = expand('~/.bundle/rsense')
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_skip_auto_completion_time = '0.3'
+"}}}
+ 
+" keymap {{{
+imap <expr><C-g>     neocomplcache#undo_completion()
+"imap <expr><CR>      neocomplcache#smart_close_popup() . "<CR>" . "<Plug>DiscretionaryEnd"
+imap <silent><expr><S-TAB> pumvisible() ? "\<C-P>" : "\<S-TAB>"
+" imap <silent><expr><TAB>   pumvisible() ? "\<C-N>" : "\<TAB>"
+imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump_or_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+" }}}
+
+
+" source from https://gist.github.com/taichouchou2/4521425
+"------------------------------------
+" neosnippet
+"------------------------------------
+" neosnippet "{{{
+ 
+" snippetを保存するディレクトリを設定してください
+" example
+" let s:default_snippet = neobundle#get_neobundle_dir() . '/neosnippet/autoload/neosnippet/snippets' " 本体に入っているsnippet
+let s:my_snippet = '~/snippet' " 自分のsnippet
+" let g:neosnippet#snippets_directory = s:my_snippet
+" let g:neosnippet#snippets_directory = s:default_snippet . ',' . s:my_snippet
+imap <silent><C-F>                <Plug>(neosnippet_expand_or_jump)
+inoremap <silent><C-U>            <ESC>:<C-U>Unite snippet<CR>
+nnoremap <silent><Space>e         :<C-U>NeoSnippetEdit -split<CR>
+smap <silent><C-F>                <Plug>(neosnippet_expand_or_jump)
+" xmap <silent>o                    <Plug>(neosnippet_register_oneshot_snippet)
