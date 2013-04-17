@@ -3,6 +3,7 @@
 !.vimshell/
 !.vimrc
 !.zshrc
+!.zshrc.local
 !.tmuxrc.conf
 !.gitignore
 vim/bundle
