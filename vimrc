@@ -174,6 +174,7 @@ set expandtab
 map <C-N> :VimFiler -split -simple -winwidth=35 -no-quit<CR>
 let g:vimfiler_as_default_explorer = 1
 map <C-M> :buffers<CR>
+map <C-I> :vertical diffsplit 
 
 let g:neocomplcache_enable_at_startup = 1
 
