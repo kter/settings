@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: vimshell.vim
 " AUTHOR: Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 22 Jan 2013.
+" Last Modified: 02 Apr 2013.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -29,7 +29,7 @@ if !exists('g:loaded_vimshell')
 endif
 
 function! vimshell#version() "{{{
-  return '902'
+  return '1000'
 endfunction"}}}
 
 function! vimshell#echo_error(string) "{{{
@@ -605,7 +605,7 @@ function! vimshell#get_alias_pattern() "{{{
   return '^\s*[[:alnum:].+#_@!%:-]\+'
 endfunction"}}}
 function! vimshell#cd(directory) "{{{
-  execute g:vimshell_cd_command '`=a:directory`'
+  execute g:vimshell_cd_command fnameescape(a:directory)
 
   if exists('*unite#sources#directory_mru#_append')
     " Append directory.
@@ -769,8 +769,10 @@ function! vimshell#execute(cmdline, ...) "{{{
   try
     call vimshell#parser#eval_script(a:cmdline, context)
   catch
-    let message = v:exception . ' ' . v:throwpoint
-    call vimshell#error_line(context.fd, message)
+    if v:exception !~# '^Vim:Interrupt'
+      let message = v:exception . ' ' . v:throwpoint
+      call vimshell#error_line(context.fd, message)
+    endif
     return 1
   endtry
 
@@ -787,8 +789,10 @@ function! vimshell#execute_async(cmdline, ...) "{{{
   try
     return vimshell#parser#eval_script(a:cmdline, context)
   catch
-    let message = v:exception . ' ' . v:throwpoint
-    call vimshell#error_line(context.fd, message)
+    if v:exception !~# '^Vim:Interrupt'
+      let message = v:exception . ' ' . v:throwpoint
+      call vimshell#error_line(context.fd, message)
+    endif
 
     let context = vimshell#get_context()
     let b:vimshell.continuation = {}
@@ -919,33 +923,21 @@ function! s:initialize_vimshell(path, context) "{{{
 endfunction"}}}
 function! vimshell#set_highlight() "{{{
   " Set syntax.
-  let prompt_pattern = "'^" . escape(
-        \ vimshell#escape_match(vimshell#get_prompt()), "'") . "'"
-  let secondary_prompt_pattern = "'^" . escape(
+  let prompt_pattern = string('^' . escape(
+        \ vimshell#escape_match(vimshell#get_prompt()), "'"))
+  let secondary_prompt_pattern = string('^' . escape(
         \ vimshell#escape_match(
-        \ vimshell#get_secondary_prompt()), "'") . "'"
-  execute 'syntax match vimshellPrompt' prompt_pattern
-  execute 'syntax match vimshellPrompt' secondary_prompt_pattern
-  execute 'syntax region   vimshellExe start='.prompt_pattern
-        \ 'end=''[^[:blank:]]\+\zs[[:blank:]\n]'''
-        \ 'contained contains=vimshellPrompt,'.
-        \ 'vimshellSpecial,vimshellConstants,'.
-        \ 'vimshellArguments,vimshellString,vimshellComment'
-  execute 'syntax region   vimshellLine start='.prompt_pattern
-        \ 'end=''$'' keepend contains=vimshellExe,'
-        \ 'vimshellDirectory,vimshellConstants,vimshellArguments,'.
-        \ 'vimshellQuoted,vimshellString,vimshellVariable,'.
-        \ 'vimshellSpecial,vimshellComment'
-  execute 'syntax region   vimshellExe start='.secondary_prompt_pattern
-        \ 'end=''[^[:blank:]]\+\zs[[:blank:]\n]'''
-        \ 'contained contains=vimshellPrompt,'.
-        \ 'vimshellSpecial,vimshellConstants,'.
-        \ 'vimshellArguments,vimshellString,vimshellComment'
-  execute 'syntax region   vimshellLine start='.secondary_prompt_pattern
-        \ 'end=''$'' keepend contains=vimshellExe,'
-        \ 'vimshellDirectory,vimshellConstants,vimshellArguments,'.
-        \ 'vimshellQuoted,vimshellString,vimshellVariable,'.
-        \ 'vimshellSpecial,vimshellComment'
+        \ vimshell#get_secondary_prompt()), "'"))
+  execute 'syntax match vimshellPrompt'
+        \ prompt_pattern 'nextgroup=vimshellCommand'
+  execute 'syntax match vimshellPrompt'
+        \ secondary_prompt_pattern 'nextgroup=vimshellCommand'
+  syntax match   vimshellCommand '\f\+'
+        \ nextgroup=vimshellLine contained
+  syntax region vimshellLine start='' end='$' keepend contained
+        \ contains=vimshellDirectory,vimshellConstants,
+        \vimshellArguments,vimshellQuoted,vimshellString,
+        \vimshellVariable,vimshellSpecial,vimshellComment
 endfunction"}}}
 function! s:initialize_context(context) "{{{
   let default_context = {

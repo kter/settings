@@ -1,3 +1,6 @@
+\q
+select * from serialnumbers limit 10;
+select email from users;
 select * from winners where id = 14;
 \d winners
 select * from winners;

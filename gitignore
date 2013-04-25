@@ -6,4 +6,8 @@
 !.zshrc.local
 !.tmuxrc.conf
 !.gitignore
-vim/bundle
+vim/bundle/
+vim/autoload/
+vim/doc/
+vim/plugin/
+vim/syntax/

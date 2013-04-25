@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: parser.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 20 Jan 2013.
+" Last Modified: 23 Mar 2013.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -434,8 +434,12 @@ function! vimproc#parser#expand_wildcard(wildcard) "{{{
   endif
 
   " Expand wildcard.
-  let expanded = split(escape(substitute(glob(wildcard), '\\', '/', 'g'), ' '), '\n')
-  if !empty(exclude_wilde)
+  let expanded = split(escape(substitute(
+        \ glob(wildcard, 1), '\\', '/', 'g'), ' '), '\n')
+  if empty(expanded)
+    " Use original string.
+    return [ a:wildcard ]
+  else
     " Check exclude wildcard.
     let candidates = expanded
     let expanded = []
@@ -608,20 +612,21 @@ function! s:parse_variables(script) "{{{
   let max = len(a:script)
   try
     while i < max
-      if a:script[i] == '$'
+      if a:script[i] == '$' && a:script[i :] =~ '^$$\?\h'
         " Eval variables.
+        let variable_name = matchstr(a:script, '^$$\?\zs\h\w*', i)
         if exists('b:vimshell')
           " For vimshell.
           let script_head = a:script[i :]
-          if script_head =~ '^$\l'
-            let script .= string(eval(printf("b:vimshell.variables['%s']",
-                  \ matchstr(a:script, '^$\zs\l\w*', i))))
-          elseif script_head =~ '^$$'
-            let script .= string(eval(printf("b:vimshell.system_variables['%s']",
-                  \ matchstr(a:script, '^$$\zs\h\w*', i))))
-          else
+          if script_head =~ '^$\l' &&
+                \ has_key(b:vimshell.variables, variable_name)
+            let script .= b:vimshell.variables[variable_name]
+          elseif script_head =~ '^\$\$' &&
+                \ has_key(b:vimshell.system_variables, variable_name)
+            let script .= b:vimshell.system_variables[variable_name]
+          elseif script_head =~ '^$\h'
             let script .= vimproc#util#substitute_path_separator(
-                  \ eval(matchstr(a:script, '^$\h\w*', i)))
+                  \ eval(variable_name))
           endif
         else
           let script .= vimproc#util#substitute_path_separator(
@@ -735,6 +740,7 @@ function! s:parse_double_quote(script, i) "{{{
         \ 'n' : "\<LF>",  'e' : "\<Esc>",
         \ '\' : '\',  '?' : '?',
         \ '"' : '"',  "'" : "'",
+        \ '`' : '`',
         \}
   let arg = ''
   let i = a:i + 1
@@ -797,9 +803,19 @@ function! s:parse_back_quote(script, i) "{{{
     let i = a:i + 2
 
     while i < max
-      if a:script[i] == '`'
-        " Quote end.
-        return [eval(arg), i+1]
+      if a:script[i] == '\'
+        " Escape.
+        let i += 1
+
+        if i >= max
+          throw 'Exception: Join to next line (\).'
+        endif
+
+        let arg .= '\' . a:script[i]
+        let i += 1
+      elseif a:script[i] == '`'
+          " Quote end.
+          return [eval(arg), i+1]
       else
         let arg .= a:script[i]
         let i += 1

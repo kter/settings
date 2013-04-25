@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: syntax/vimshell.vim
 " AUTHOR: Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 21 Jan 2013.
+" Last Modified: 16 Mar 2013.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -26,7 +26,7 @@
 
 if version < 700
   syntax clear
-elseif exists("b:current_syntax")
+elseif exists('b:current_syntax')
   finish
 endif
 
@@ -39,7 +39,7 @@ syntax region   vimshellString
 syntax region   vimshellString
       \ start=+`+ end=+`+ oneline contained
 syntax match   vimshellString
-      \ '[''"`]$' contained contained
+      \ '[''"`]$' contained
 syntax match   vimshellError
         \ '!!![^!].*!!!' contains=vimshellErrorHidden
 syntax match   vimshellComment
@@ -54,7 +54,7 @@ syntax match   vimshellConstants
       \ '[+-]\=\d\+#[-+]\=\w\+\>'
 syntax match   vimshellConstants
       \ '[+-]\=\d\+\.\d\+\([eE][+-]\?\d\+\)\?\>'
-syntax match   vimshellExe
+syntax match   vimshellCommand
       \ '\%(^\|\s\)[[:alnum:]_.][[:alnum:]_.-]\+\*[[:blank:]\n]'
 syntax match   vimshellSocket
       \ '\%(^\|\s\)[[:alnum:]_.][[:alnum:]_.-]\+=[[:blank:]\n]'
@@ -71,6 +71,13 @@ syntax match   vimshellVariable
 syntax match   vimshellVariable
       \ '$$\h\w*' contained
 syntax region   vimshellVariable  start=+${+ end=+}+ contained
+
+syntax match vimshellCommand '[|;]\s*\f\+'
+      \ contained contains=vimshellSpecial,vimshellArguments
+
+syntax match vimshellURI
+      \ '\a\a\+://[[:alnum:];/?:@&=+$,_.!~*|()-]\+' containedin=ALL
+
 if vimshell#util#is_windows()
   syntax match   vimshellArguments
         \ '\s/[?:,_[:alnum:]]\+\ze\%(\s\|$\)' contained
@@ -100,8 +107,11 @@ else
   highlight default link vimshellUserPromptHidden Ignore
 endif
 
-syntax match vimshellExe '[|;]\s*\f\+'
-      \ contained contains=vimshellSpecial,vimshellArguments
+if has('gui_running')
+  highlight vimshellURI gui=UNDERLINE guifg=#6699ff guibg=NONE
+else
+  highlight def link vimshellURI Comment
+endif
 
 highlight default link vimshellPrompt Identifier
 highlight default link vimshellUserPrompt Special
@@ -115,7 +125,7 @@ highlight default link vimshellVariable Comment
 highlight default link vimshellComment Identifier
 highlight default link vimshellNormal Normal
 
-highlight default link vimshellExe Statement
+highlight default link vimshellCommand Statement
 highlight default link vimshellDirectory Preproc
 highlight default link vimshellSocket Constant
 highlight default link vimshellLink Comment

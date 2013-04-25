@@ -34,13 +34,15 @@
 #endif
 
 /* for forkpty() / login_tty() */
-#if defined __linux__ || defined __CYGWIN__
+#if (defined __linux__ || defined __CYGWIN__) && !defined __ANDROID__
 # include <pty.h>
 # include <utmp.h>
 #elif defined __APPLE__ || defined __NetBSD__
 # include <util.h>
-#elif defined __sun
-# include "ptytty.c"
+#elif defined __sun__ || defined __ANDROID__
+# include <termios.h>
+int openpty(int *, int *, char *, struct termios *, struct winsize *);
+int forkpty(int *, char *, struct termios *, struct winsize *);
 #else
 # include <termios.h>
 # include <libutil.h>
@@ -63,6 +65,8 @@
 #include <sys/wait.h>
 #if defined __NetBSD__
 #define WIFCONTINUED(x) (_WSTATUS(x) == _WSTOPPED && WSTOPSIG(x) == 0x13)
+#elif defined __ANDROID__
+#define WIFCONTINUED(x) (WIFSTOPPED(x) && WSTOPSIG(x) == 0x13)
 #endif
 
 /* for socket */
