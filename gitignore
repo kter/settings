@@ -11,3 +11,4 @@ vim/autoload/
 vim/doc/
 vim/plugin/
 vim/syntax/
+vim/neobundle/doc
