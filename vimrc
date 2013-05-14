@@ -151,15 +151,17 @@ if has('vim_starting')
 endif
 " originalrepos on github
 "NeoBundle 'Shougo/neobundle.vim'
-"NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc.vim'
 "NeoBundle 'VimClojure'
-"NeoBundle 'Shougo/vimshell'
-"NeoBundle 'Shougo/unite.vim'
-"NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache-rsense'
+NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+NeoBundle 'thinca/vim-ref'
 
 filetype plugin indent on     " required!
 filetype indent on
@@ -224,3 +226,36 @@ inoremap <silent><C-U>            <ESC>:<C-U>Unite snippet<CR>
 nnoremap <silent><Space>e         :<C-U>NeoSnippetEdit -split<CR>
 smap <silent><C-F>                <Plug>(neosnippet_expand_or_jump)
 " xmap <silent>o                    <Plug>(neosnippet_register_oneshot_snippet)
+
+
+
+"http://www.karakaram.com/ref-webdict
+"webdictサイトの設定
+let g:ref_source_webdict_sites = {
+\   'je': {
+\     'url': 'http://dictionary.infoseek.ne.jp/jeword/%s',
+\   },
+\   'ej': {
+\     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
+\   },
+\   'wiki': {
+\     'url': 'http://ja.wikipedia.org/wiki/%s',
+\   },
+\ }
+ 
+"デフォルトサイト
+let g:ref_source_webdict_sites.default = 'ej'
+ 
+"出力に対するフィルタ。最初の数行を削除
+function! g:ref_source_webdict_sites.je.filter(output)
+  return join(split(a:output, "\n")[15 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.ej.filter(output)
+  return join(split(a:output, "\n")[15 :], "\n")
+endfunction
+function! g:ref_source_webdict_sites.wiki.filter(output)
+  return join(split(a:output, "\n")[17 :], "\n")
+endfunction
+ 
+nmap <Leader>rj :<C-u>Ref webdict je<Space>
+nmap <Leader>re :<C-u>Ref webdict ej<Space>
