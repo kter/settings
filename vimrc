@@ -162,6 +162,7 @@ NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 NeoBundle 'thinca/vim-ref'
+NeoBundle 'minibufexpl.vim'
 
 filetype plugin indent on     " required!
 filetype indent on
@@ -259,3 +260,8 @@ endfunction
  
 nmap <Leader>rj :<C-u>Ref webdict je<Space>
 nmap <Leader>re :<C-u>Ref webdict ej<Space>
+
+"minibufexpl.vim
+:let g:miniBufExplMapWindowNavVim = 1
+:let g:miniBufExplMapWindowNavArrows = 1
+:let g:miniBufExplMapCTabSwitchBuffs = 1
