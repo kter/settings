@@ -163,6 +163,7 @@ NeoBundle 'scrooloose/syntastic'
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'minibufexpl.vim'
+NeoBundle 'TwitVim'
 
 filetype plugin indent on     " required!
 filetype indent on
