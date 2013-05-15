@@ -12,3 +12,5 @@ vim/doc/
 vim/plugin/
 vim/syntax/
 vim/neobundle/doc
+vimshell/command-history
+vim/bundle/.neobundle/install_info
