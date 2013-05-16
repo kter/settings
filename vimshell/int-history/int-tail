@@ -1,6 +1,0 @@
-
-vimshell% ruby script/runner "Winner.create_winner_record(['ttakahashi@up-frontier.jp', 'ttakahashi2@up-frontier.jp'])"
-vimshell% tail -f log/development.log
-nternal_server_errorC
-pwd
-vimshell% 
