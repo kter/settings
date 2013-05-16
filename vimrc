@@ -151,7 +151,8 @@ if has('vim_starting')
 endif
 " originalrepos on github
 "NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc.vim'
+"NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/vimfiler.vim'
 "NeoBundle 'VimClojure'
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/unite.vim'
