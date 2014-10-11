@@ -325,3 +325,4 @@ VIMRUNTIME=$HOME/.vim/bundle/
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
+PATH=$PATH:/usr/local/heroku/bin
