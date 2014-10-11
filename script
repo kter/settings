@@ -20,25 +20,4 @@ cd $HOME/dotfiles/vim/bundle
 git clone git://github.com/Shougo/neobundle.vim $HOME/dotfiles/vim/bundle/neobundle.vim
 vim +NeoBundleInstall +q
 
-#git clone https://github.com/szw/vim-tags.git $HOME/.vim/bundle/vim-tags
-#git clone git://github.com/Shougo/vimshell.git $HOME/.vim/bundle/vimshell
-#git clone git://github.com/Shougo/vimproc.git $HOME/.vim/bundle/vimproc
-#git clone https://github.com/Shougo/vimfiler.git $HOME/.vim/bundle/vimfiler
-#git clone git://github.com/Shougo/unite.vim.git $HOME/.vim/bundle/unite.vim
-#git clone git://github.com/Shougo/neocomplcache-rsense.git $HOME/.vim/bundle/neocomplcache-rsense
-#git clone git://github.com/Shougo/neocomplcache.git $HOME/.vim/bundle/neocomplcache
-
-#cd $HOME/.vim/bundle/vimshell && cp -r autoload/ doc/ plugin/ syntax/ $HOME/.vim 
-#cd $HOME/.vim/bundle/vimproc && cp -r autoload/ doc/ plugin/ $HOME/.vim
-#cd $HOME/.vim/bundle/vimfiler && cp -r autoload/ doc/ plugin/ syntax/ $HOME/.vim
-#cd $HOME/.vim/bundle/unite.vim && cp -r autoload/ doc/ plugin/ syntax/ $HOME/.vim
-#cd $HOME/.vim/bundle/neocomplcache-rsense && cp -r autoload/ doc/ $HOME/.vim
-#cd $HOME/.vim/bundle/neocomplcache && cp -r autoload/ doc/ plugin/ vest/  $HOME/.vim
-
-#cd $HOME/.vim/bundle/vimproc.vim && make -f make_unix.mak
-
-echo "#CHARACTER_SET:iso-8859-1"
-echo "CHARACTER_SET:utf-8"
-echo "#PREFERRED_LANGUAGE:en"
-echo "PREFERRED_LANGUAGE:ja"
 

@@ -145,10 +145,39 @@ set nocompatible               " be iMproved
 filetype off
 
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle/'))
-endif
+" NeoBundle
+
+ " Note: Skip initialization for vim-tiny or vim-small.
+ if !1 | finish | endif
+
+ if has('vim_starting')
+   set nocompatible               " Be iMproved
+
+   " Required:
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+ endif
+
+ " Required:
+ call neobundle#begin(expand('~/.vim/bundle/'))
+
+ " Let NeoBundle manage NeoBundle
+ " Required:
+ NeoBundleFetch 'Shougo/neobundle.vim'
+
+ " My Bundles here:
+ " Refer to |:NeoBundle-examples|.
+ " Note: You don't set neobundle setting in .gvimrc!
+
+ call neobundle#end()
+
+ " Required:
+ filetype plugin indent on
+
+ " If there are uninstalled bundles found on startup,
+ " this will conveniently prompt you to install them.
+ NeoBundleCheck
+ 
+
 " originalrepos on github
 "NeoBundle 'Shougo/neobundle.vim'
 "NeoBundle 'Shougo/vimproc.vim'
@@ -166,6 +195,9 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'minibufexpl.vim'
 NeoBundle 'TwitVim'
 NeoBundle 'itchyny/landscape.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 filetype plugin indent on     " required!
 filetype indent on
@@ -268,3 +300,6 @@ nmap <Leader>re :<C-u>Ref webdict ej<Space>
 :let g:miniBufExplMapWindowNavVim = 1
 :let g:miniBufExplMapWindowNavArrows = 1
 :let g:miniBufExplMapCTabSwitchBuffs = 1
+
+"vim-airline
+NeoBundle 'bling/vim-airline'
