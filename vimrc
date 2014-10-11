@@ -165,6 +165,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'minibufexpl.vim'
 NeoBundle 'TwitVim'
+NeoBundle 'itchyny/landscape.vim'
 
 filetype plugin indent on     " required!
 filetype indent on
