@@ -1,19 +1,18 @@
-syntax on
+" curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 set encoding=utf-8
 set number
 set ruler
 set laststatus=2
 set hlsearch
+set nobackup
 highlight StatusLine term=bold cterm=bold ctermfg=black ctermbg=white
 " highlight LineNr ctermfg=grey
 highlight LineNr ctermfg=DarkCyan
 " ステータスラインに日時を表示する
 function! g:Date()
-    return strftime("%x %H:%M")
+return strftime("%x %H:%M")
 endfunction
 set statusline=%F%m%r%h%w\%=\ %Y\ \%{&ff}\ \%{&fileencoding}\ \%l/%L
-"set statusline=%F%m%r%h%w\%=\ %Y\ \%{&ff}\ \%{&fileencoding}\ \%l/%L\ \ \%{g:Date()}
-
 
 """"""""""""""""""""""""""""""
 "全角スペースを表示
@@ -25,281 +24,259 @@ set statusline=%F%m%r%h%w\%=\ %Y\ \%{&ff}\ \%{&fileencoding}\ \%l/%L
 
 "デフォルトのZenkakuSpaceを定義
 function! ZenkakuSpace()
-  highlight ZenkakuSpace cterm=underline ctermfg=darkgrey gui=underline guifg=darkgrey
+highlight ZenkakuSpace cterm=underline ctermfg=darkgrey gui=underline guifg=darkgrey
 endfunction
 
 if has('syntax')
-  augroup ZenkakuSpace
-    autocmd!
-    " ZenkakuSpaceをカラーファイルで設定するなら次の行は削除
-    autocmd ColorScheme       * call ZenkakuSpace()
-    " 全角スペースのハイライト指定
-    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
-  augroup END
-  call ZenkakuSpace()
+augroup ZenkakuSpace
+autocmd!
+" ZenkakuSpaceをカラーファイルで設定するなら次の行は削除
+autocmd ColorScheme * call ZenkakuSpace()
+" 全角スペースのハイライト指定
+autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+augroup END
+call ZenkakuSpace()
 endif
 
 
 " 挿入モード時の色指定
 " https://github.com/fuenor/vim-statusline/blob/master/insert-statusline.vim
 if !exists('g:hi_insert')
-  let g:hi_insert = 'highlight StatusLine guifg=White guibg=DarkCyan gui=none ctermfg=Black ctermbg=DarkCyan cterm=none'
+let g:hi_insert = 'highlight StatusLine guifg=White guibg=DarkCyan gui=none ctermfg=Black ctermbg=DarkCyan cterm=none'
 endif
- 
+
 if has('unix') && !has('gui_running')
-  inoremap <silent> <ESC> <ESC>
-  inoremap <silent> <C-[> <ESC>
+inoremap <silent> <ESC> <ESC>
+inoremap <silent> <C-[> <ESC>
 endif
- 
+
 if has('syntax')
-  augroup InsertHook
-    autocmd!
-    autocmd InsertEnter * call s:StatusLine('Enter')
-    autocmd InsertLeave * call s:StatusLine('Leave')
-  augroup END
+augroup InsertHook
+autocmd!
+autocmd InsertEnter * call s:StatusLine('Enter')
+autocmd InsertLeave * call s:StatusLine('Leave')
+augroup END
 endif
- 
+
 let s:slhlcmd = ''
 function! s:StatusLine(mode)
-  if a:mode == 'Enter'
-    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
-    silent exec g:hi_insert
-  else
-    highlight clear StatusLine
-    silent exec s:slhlcmd
-  endif
+if a:mode == 'Enter'
+silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+silent exec g:hi_insert
+else
+highlight clear StatusLine
+silent exec s:slhlcmd
+endif
 endfunction
- 
+
 function! s:GetHighlight(hi)
-  redir => hl
-  exec 'highlight '.a:hi
-  redir END
-  let hl = substitute(hl, '[\r\n]', '', 'g')
-  let hl = substitute(hl, 'xxx', '', '')
-  return hl
+redir => hl
+exec 'highlight '.a:hi
+redir END
+let hl = substitute(hl, '[\r\n]', '', 'g')
+let hl = substitute(hl, 'xxx', '', '')
+return hl
 endfunction
 
 
 " http://www.kawaz.jp/pukiwiki/?vim#a7f8c70e
 " 文字コードの自動認識
 if &encoding !=# 'utf-8'
-  set encoding=japan
-  set fileencoding=japan
+set encoding=japan
+set fileencoding=japan
 endif
 if has('iconv')
-  let s:enc_euc = 'euc-jp'
-  let s:enc_jis = 'iso-2022-jp'
-  " iconvがeucJP-msに対応しているかをチェック
-  if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'eucjp-ms'
-    let s:enc_jis = 'iso-2022-jp-3'
-  " iconvがJISX0213に対応しているかをチェック
-  elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-    let s:enc_euc = 'euc-jisx0213'
-    let s:enc_jis = 'iso-2022-jp-3'
-  endif
-  " fileencodingsを構築
-  if &encoding ==# 'utf-8'
+let s:enc_euc = 'euc-jp'
+let s:enc_jis = 'iso-2022-jp'
+" iconvがeucJP-msに対応しているかをチェック
+if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
+let s:enc_euc = 'eucjp-ms'
+let s:enc_jis = 'iso-2022-jp-3'
+" iconvがJISX0213に対応しているかをチェック
+elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
+let s:enc_euc = 'euc-jisx0213'
+let s:enc_jis = 'iso-2022-jp-3'
+endif
+" fileencodingsを構築
+if &encoding ==# 'utf-8'
 
-    let s:fileencodings_default = &fileencodings
-    let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-    let &fileencodings = &fileencodings .','. s:fileencodings_default
-    unlet s:fileencodings_default
-  else
-    let &fileencodings = &fileencodings .','. s:enc_jis
-    set fileencodings+=utf-8,ucs-2le,ucs-2
-    if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-      set fileencodings+=cp932
-      set fileencodings-=euc-jp
-      set fileencodings-=euc-jisx0213
-      set fileencodings-=eucjp-ms
-      let &encoding = s:enc_euc
-      let &fileencoding = s:enc_euc
-    else
-      let &fileencodings = &fileencodings .','. s:enc_euc
-    endif
-  endif
-  " 定数を処分
-  unlet s:enc_euc
-  unlet s:enc_jis
+let s:fileencodings_default = &fileencodings
+let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
+let &fileencodings = &fileencodings .','. s:fileencodings_default
+unlet s:fileencodings_default
+else
+let &fileencodings = &fileencodings .','. s:enc_jis
+set fileencodings+=utf-8,ucs-2le,ucs-2
+if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
+set fileencodings+=cp932
+set fileencodings-=euc-jp
+set fileencodings-=euc-jisx0213
+set fileencodings-=eucjp-ms
+let &encoding = s:enc_euc
+let &fileencoding = s:enc_euc
+else
+let &fileencodings = &fileencodings .','. s:enc_euc
+endif
+endif
+" 定数を処分
+unlet s:enc_euc
+unlet s:enc_jis
 endif
 
 
 " 日本語を含まない場合は fileencoding に encoding を使うようにする
 if has('autocmd')
-  function! AU_ReCheck_FENC()
-    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-      let &fileencoding=&encoding
-    endif
-  endfunction
-  autocmd BufReadPost * call AU_ReCheck_FENC()
+function! AU_ReCheck_FENC()
+if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+let &fileencoding=&encoding
+endif
+endfunction
+autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
 " 改行コードの自動認識
 set fileformats=unix,dos,mac
 " □とか○の文字があってもカーソル位置がずれないようにする
 if exists('&ambiwidth')
-  set ambiwidth=double
+set ambiwidth=double
 endif
 
-set nocompatible               " be iMproved
+set nocompatible " be iMproved
 filetype off
 
-
-" NeoBundle
-
- " Note: Skip initialization for vim-tiny or vim-small.
- if !1 | finish | endif
-
- if has('vim_starting')
-   set nocompatible               " Be iMproved
-
-   " Required:
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
- endif
-
- " Required:
- call neobundle#begin(expand('~/.vim/bundle/'))
-
- " Let NeoBundle manage NeoBundle
- " Required:
- NeoBundleFetch 'Shougo/neobundle.vim'
-
- " My Bundles here:
- " Refer to |:NeoBundle-examples|.
- " Note: You don't set neobundle setting in .gvimrc!
-
- call neobundle#end()
-
- " Required:
- filetype plugin indent on
-
- " If there are uninstalled bundles found on startup,
- " this will conveniently prompt you to install them.
- NeoBundleCheck
- 
-
-" originalrepos on github
-"NeoBundle 'Shougo/neobundle.vim'
-"NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-"NeoBundle 'VimClojure'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neocomplcache-rsense'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'scrooloose/syntastic'
-""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'minibufexpl.vim'
-NeoBundle 'TwitVim'
-NeoBundle 'itchyny/landscape.vim'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-
-filetype plugin indent on     " required!
+filetype plugin indent on " required!
 filetype indent on
 syntax on
-"```vi上から、:NeoBundleInstallで.vimrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。プラグインを削除したい場合は、vimrc上からNeoBundleの記述を消して:NeoBundleCleanでできる。
 
-NeoBundle 'szw/vim-tags'
 
 set tabstop=2
 set shiftwidth=2
 set expandtab
-map <C-N> :VimFiler -split -simple -winwidth=35 -no-quit<CR>
-let g:vimfiler_as_default_explorer = 1
 map <C-M> :buffers<CR>
-map <C-I> :vertical diffsplit 
-
-let g:neocomplcache_enable_at_startup = 1
+map <C-I> :vertical diffsplit
 
 
-" source from https://gist.github.com/taichouchou2/4521428
-"------------------------------------
-" neocomplcache
-"------------------------------------
-" 補完・履歴 neocomplcache "{{{
-set infercase
- 
-"----------------------------------------
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1
- 
-" default config"{{{
-let g:neocomplcache_force_overwrite_completefunc = 1
-let g:neocomplcache#sources#rsense#home_directory = expand('~/.bundle/rsense')
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_skip_auto_completion_time = '0.3'
-"}}}
- 
-" keymap {{{
-imap <expr><C-g>     neocomplcache#undo_completion()
-"imap <expr><CR>      neocomplcache#smart_close_popup() . "<CR>" . "<Plug>DiscretionaryEnd"
-imap <silent><expr><S-TAB> pumvisible() ? "\<C-P>" : "\<S-TAB>"
-" imap <silent><expr><TAB>   pumvisible() ? "\<C-N>" : "\<TAB>"
-imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_jump_or_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-" }}}
+"NeoBundle Scripts-----------------------------
+if has('vim_starting')
+  set nocompatible               " Be iMproved
 
+  " Required:
+  set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
+endif
 
-" source from https://gist.github.com/taichouchou2/4521425
-"------------------------------------
-" neosnippet
-"------------------------------------
-" neosnippet "{{{
- 
-" snippetを保存するディレクトリを設定してください
-" example
-" let s:default_snippet = neobundle#get_neobundle_dir() . '/neosnippet/autoload/neosnippet/snippets' " 本体に入っているsnippet
-let s:my_snippet = '~/snippet' " 自分のsnippet
-" let g:neosnippet#snippets_directory = s:my_snippet
-" let g:neosnippet#snippets_directory = s:default_snippet . ',' . s:my_snippet
-imap <silent><C-F>                <Plug>(neosnippet_expand_or_jump)
-inoremap <silent><C-U>            <ESC>:<C-U>Unite snippet<CR>
-nnoremap <silent><Space>e         :<C-U>NeoSnippetEdit -split<CR>
-smap <silent><C-F>                <Plug>(neosnippet_expand_or_jump)
-" xmap <silent>o                    <Plug>(neosnippet_register_oneshot_snippet)
+" Required:
+call neobundle#begin(expand('$HOME/.vim/bundle'))
 
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-
-"http://www.karakaram.com/ref-webdict
-"webdictサイトの設定
-let g:ref_source_webdict_sites = {
-\   'je': {
-\     'url': 'http://dictionary.infoseek.ne.jp/jeword/%s',
-\   },
-\   'ej': {
-\     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
-\   },
-\   'wiki': {
-\     'url': 'http://ja.wikipedia.org/wiki/%s',
-\   },
-\ }
- 
-"デフォルトサイト
-let g:ref_source_webdict_sites.default = 'ej'
- 
-"出力に対するフィルタ。最初の数行を削除
-function! g:ref_source_webdict_sites.je.filter(output)
-  return join(split(a:output, "\n")[15 :], "\n")
-endfunction
-function! g:ref_source_webdict_sites.ej.filter(output)
-  return join(split(a:output, "\n")[15 :], "\n")
-endfunction
-function! g:ref_source_webdict_sites.wiki.filter(output)
-  return join(split(a:output, "\n")[17 :], "\n")
-endfunction
- 
-nmap <Leader>rj :<C-u>Ref webdict je<Space>
-nmap <Leader>re :<C-u>Ref webdict ej<Space>
-
-"minibufexpl.vim
-:let g:miniBufExplMapWindowNavVim = 1
-:let g:miniBufExplMapWindowNavArrows = 1
-:let g:miniBufExplMapCTabSwitchBuffs = 1
-
-"vim-airline
+" My Bundles here:
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'basyura/unite-rails'
+NeoBundle 'szw/vim-tags'
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 NeoBundle 'bling/vim-airline'
+NeoBundle 'taglist.vim'
+
+" You can specify revision/branch/tag.
+
+NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
+
+" neocomplcache Installation
+let g:neocomplcache_enable_at_startup = 1
+
+"vim tab
+
+" Anywhere SID.
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" Set tabline.
+function! s:my_tabline()  "{{{
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+
+    let no = i  " display 0-origin tabpagenr.
+    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+    let title = fnamemodify(bufname(bufnr), ':t')
+    let title = '[' . title . ']'
+    let s .= '%'.i.'T'
+    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+    let s .= no . ':' . title
+    let s .= mod
+    let s .= '%#TabLineFill# '
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
+endfunction "}}}
+let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+set showtabline=2 " 常にタブラインを表示
+
+" The prefix key.
+nnoremap    [Tag]   <Nop>
+nmap    t [Tag]
+" Tab jump
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
+
+map <silent> [Tag]c :tablast <bar> tabnew<CR>
+" tc 新しいタブを一番右に作る
+map <silent> [Tag]x :tabclose<CR>
+" tx タブを閉じる
+map <silent> [Tag]n :tabnext<CR>
+" tn 次のタブ
+map <silent> [Tag]p :tabprevious<CR>
+" tp 前のタブ
+let g:neocomplcache_enable_at_startup = 1
+
+
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+" taglist
+:set tags=tags
+
+" markdown
+" http://www.key-p.com/blog/staff/archives/9032
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+au BufRead,BufNewFile *.md set filetype=markdown
+
+NeoBundle 'jonathanfilip/vim-lucius'
+" colorscheme lucius
+
+" .txtファイルは80文字で自動改行しない
+autocmd BufRead *.txt set tw=0
