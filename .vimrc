@@ -265,6 +265,8 @@ let g:neocomplcache_enable_at_startup = 1
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
 " taglist
 :set tags=tags
 
@@ -280,3 +282,7 @@ NeoBundle 'jonathanfilip/vim-lucius'
 
 " .txtファイルは80文字で自動改行しない
 autocmd BufRead *.txt set tw=0
+
+NeoBundle 'taglist.vim'
+
+NeoBundle 'tpope/vim-rails'
