@@ -280,9 +280,15 @@ au BufRead,BufNewFile *.md set filetype=markdown
 NeoBundle 'jonathanfilip/vim-lucius'
 " colorscheme lucius
 
-" .txtファイルは80文字で自動改行しない
-autocmd BufRead *.txt set tw=0
-
 NeoBundle 'taglist.vim'
 
 NeoBundle 'tpope/vim-rails'
+
+" 80行で折り返さないようにする
+noremap <Plug>(ToggleColorColumn)
+            \ :<c-u>let &colorcolumn = len(&colorcolumn) > 0 ? '' :
+            \   join(range(81, 9999), ',')<CR>
+" ノーマルモードの 'cc' に割り当てる
+nmap cc <Plug>(ToggleColorColumn)
+" 上記は日本語では効かないっぽい?
+set formatoptions=q 
