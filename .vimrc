@@ -292,3 +292,7 @@ noremap <Plug>(ToggleColorColumn)
 nmap cc <Plug>(ToggleColorColumn)
 " 上記は日本語では効かないっぽい?
 set formatoptions=q 
+
+" バックアップとテンポラリファイルを$HOME/.vim/tmpに保存
+set directory=$HOME/.vim/tmp
+set backupdir=$HOME/.vim/tmp
