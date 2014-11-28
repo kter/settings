@@ -329,3 +329,4 @@ alias date2ut='date +%s --date'
 function ut2date() {echo $1 | awk '{print strftime("%Y-%m-%d %H:%M:%S",$1)}';}
 
 alias ipaddr=`/sbin/ifconfig eth0 | grep 'inet addr:' | sed -e 's/^.*inet addr://' -e 's/ .*//'`
+fpath=(~/.zsh $fpath)
