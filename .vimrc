@@ -296,3 +296,7 @@ set formatoptions=q
 " バックアップとテンポラリファイルを$HOME/.vim/tmpに保存
 set directory=$HOME/.vim/tmp
 set backupdir=$HOME/.vim/tmp
+
+" require brew install cmigemo
+NeoBundle 'caya14busa/vim-migemo'
+let g:ctrlp_use_migemo = 1
