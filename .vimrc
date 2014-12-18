@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 set encoding=utf-8
 set number
@@ -193,10 +194,7 @@ NeoBundle 'Shougo/vimproc', {
       \ }
 NeoBundle 'bling/vim-airline'
 NeoBundle 'taglist.vim'
-
-" You can specify revision/branch/tag.
-
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+NeoBundle 'Shougo/vimshell'
 
 " Required:
 call neobundle#end()
@@ -300,3 +298,12 @@ set backupdir=$HOME/.vim/tmp
 " require brew install cmigemo
 NeoBundle 'caya14busa/vim-migemo'
 let g:ctrlp_use_migemo = 1
+
+NeoBundle 'sandeepcr529/Buffet.vim'
+map <C-k> :Bufferlist<CR>
+command Bd Buffetdelete
+command Bot Buffetopentab
+command Boh Buffetopenh
+
+let g:unite_source_file_mru_limit = 100
+NeoBundle 'Shougo/neomru.vim'

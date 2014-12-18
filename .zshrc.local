@@ -328,5 +328,15 @@ PATH=$PATH:$HOME/bin/
 alias date2ut='date +%s --date'
 function ut2date() {echo $1 | awk '{print strftime("%Y-%m-%d %H:%M:%S",$1)}';}
 
-alias ipaddr=`/sbin/ifconfig eth0 | grep 'inet addr:' | sed -e 's/^.*inet addr://' -e 's/ .*//'`
+export IPADDR=`/sbin/ifconfig en0 | grep 'inet ' | sed -e 's/^.*inet //' -e 's/ .*//'`
+#export IPADDR=`/sbin/ifconfig eth0 | grep 'inet addr:' | sed -e 's/^.*inet addr://' -e 's/ .*//'`
 fpath=(~/.zsh $fpath)
+
+# メモリに保存される履歴の件数
+export HISTSIZE=999999999999999999
+# 履歴ファイルに保存される履歴の件数
+export SAVEHIST=999999999999999999
+# 重複を記録しない
+setopt hist_ignore_dups
+# 開始と終了を記録
+setopt EXTENDED_HISTORY
