@@ -307,3 +307,15 @@ command Boh Buffetopenh
 
 let g:unite_source_file_mru_limit = 100
 NeoBundle 'Shougo/neomru.vim'
+
+NeoBundle 'thinca/vim-quickrun'
+let g:quickrun_config = {}
+let g:quickrun_config.markdown = {
+      \ 'outputter' : 'null',
+      \ 'command'   : 'open',
+      \ 'cmdopt'    : '-a',
+      \ 'args'      : '/Application/Marked\ 2.app',
+      \ 'exec'      : '%c %o %a %s:p',
+      \ }
+
+NeoBundle 'Shougo/tabpagebuffer.vim'
