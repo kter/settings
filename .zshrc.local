@@ -319,6 +319,7 @@
 
 ## END OF FILE #################################################################
 
+xsource $HOME/.zshrc.spec
 VIMRUNTIME=$HOME/.vim/bundle/
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
