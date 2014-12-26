@@ -296,7 +296,7 @@ set directory=$HOME/.vim/tmp
 set backupdir=$HOME/.vim/tmp
 
 " require brew install cmigemo
-NeoBundle 'caya14busa/vim-migemo'
+NeoBundle 'haya14busa/vim-migemo'
 let g:ctrlp_use_migemo = 1
 
 NeoBundle 'sandeepcr529/Buffet.vim'
@@ -319,3 +319,5 @@ let g:quickrun_config.markdown = {
       \ }
 
 NeoBundle 'Shougo/tabpagebuffer.vim'
+
+NeoBundle 'Shougo/echodoc.vim'
