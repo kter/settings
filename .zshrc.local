@@ -349,3 +349,12 @@ case ${OSTYPE} in
     export IPADDR=`/sbin/ifconfig eth0 | grep 'inet addr:' | sed -e 's/^.*inet addr://' -e 's/ .*//'`
     ;;
 esac
+
+# aws zsh completer
+case ${OSTYPE} in
+  darwin*)
+    source /usr/local/bin/aws_zsh_completer.sh
+    ;;
+  linux*)
+    ;;
+esac

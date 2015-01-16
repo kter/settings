@@ -321,3 +321,6 @@ let g:quickrun_config.markdown = {
 NeoBundle 'Shougo/tabpagebuffer.vim'
 
 NeoBundle 'Shougo/echodoc.vim'
+NeoBundle 'scrooloose/nerdtree'
+
+nnoremap <silent> ,uf :<C-u>Unite file_mru buffer<CR>
