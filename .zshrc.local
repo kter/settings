@@ -328,6 +328,7 @@ PATH=$PATH:$HOME/bin/
 
 alias date2ut='date +%s --date'
 function ut2date() {echo $1 | awk '{print strftime("%Y-%m-%d %H:%M:%S",$1)}';}
+function mkpasswd() {head -c 32 /dev/urandom | openssl enc -base64 | head -c $1;}
 
 fpath=(~/.zsh $fpath)
 
