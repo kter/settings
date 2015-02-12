@@ -325,3 +325,4 @@ NeoBundle 'scrooloose/nerdtree'
 
 nnoremap <silent> ,uf :<C-u>Unite file_mru buffer<CR>
 call unite#custom_default_action('file', 'tabopen')
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>

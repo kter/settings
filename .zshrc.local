@@ -359,3 +359,4 @@ case ${OSTYPE} in
   linux*)
     ;;
 esac
+setopt SH_WORD_SPLIT
