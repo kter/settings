@@ -326,3 +326,12 @@ NeoBundle 'scrooloose/nerdtree'
 nnoremap <silent> ,uf :<C-u>Unite file_mru buffer<CR>
 call unite#custom_default_action('file', 'tabopen')
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+
+if filereadable(expand('~/.vimrc_evervim'))
+  source ~/.vimrc_evervim
+endif
+NeoBundle 'kakkyz81/evervim'
+nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
+nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
+nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
+nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
