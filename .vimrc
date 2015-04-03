@@ -335,3 +335,6 @@ nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
 nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
 nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
 nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
+
+colorscheme desert
+colorscheme lucius
