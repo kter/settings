@@ -361,3 +361,6 @@ case ${OSTYPE} in
     ;;
 esac
 setopt SH_WORD_SPLIT
+
+# Ctrl-w‚Å/–ˆ‚Éíœ
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
