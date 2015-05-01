@@ -326,6 +326,7 @@ NeoBundle 'scrooloose/nerdtree'
 nnoremap <silent> ,uf :<C-u>Unite file_mru buffer<CR>
 call unite#custom_default_action('file', 'tabopen')
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ,ul :<C-u>Unite file<CR>
 
 if filereadable(expand('~/.vimrc_evervim'))
   source ~/.vimrc_evervim
@@ -338,3 +339,5 @@ nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
 
 colorscheme desert
 colorscheme lucius
+
+autocmd! FileType markdown hi! def link markdownItalic LineNr
