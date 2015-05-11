@@ -330,12 +330,12 @@ nnoremap <silent> ,ul :<C-u>Unite file<CR>
 
 if filereadable(expand('~/.vimrc_evervim'))
   source ~/.vimrc_evervim
+  NeoBundle 'kakkyz81/evervim'
+  nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
+  nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
+  nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
+  nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
 endif
-NeoBundle 'kakkyz81/evervim'
-nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
-nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
-nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
-nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
 
 colorscheme desert
 colorscheme lucius
