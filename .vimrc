@@ -342,9 +342,13 @@ colorscheme lucius
 
 autocmd! FileType markdown hi! def link markdownItalic LineNr
 
-augroup PHP
-  autocmd!
-  autocmd FileType php set makeprg=php\ -l\ %
-  " php -lの構文チェックでエラーがなければ「No syntax errors」の一行だけ出力される
-  autocmd BufWritePost *.php silent make | if len(getqflist()) != 1 | copen | else | cclose | endif
-augroup END
+NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'tpope/vim-pathogen.git'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
