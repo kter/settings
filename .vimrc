@@ -195,6 +195,20 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'bling/vim-airline'
 NeoBundle 'taglist.vim'
 NeoBundle 'Shougo/vimshell'
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'taglist.vim'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'haya14busa/vim-migemo'
+NeoBundle 'sandeepcr529/Buffet.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'Shougo/tabpagebuffer.vim'
+NeoBundle 'Shougo/echodoc.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'kakkyz81/evervim'
 
 " Required:
 call neobundle#end()
@@ -270,17 +284,10 @@ let g:airline_powerline_fonts = 1
 
 " markdown
 " http://www.key-p.com/blog/staff/archives/9032
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
 au BufRead,BufNewFile *.md set filetype=markdown
 
-NeoBundle 'jonathanfilip/vim-lucius'
 " colorscheme lucius
 
-NeoBundle 'taglist.vim'
-
-NeoBundle 'tpope/vim-rails'
 
 " 80行で折り返さないようにする
 noremap <Plug>(ToggleColorColumn)
@@ -296,19 +303,15 @@ set directory=$HOME/.vim/tmp
 set backupdir=$HOME/.vim/tmp
 
 " require brew install cmigemo
-NeoBundle 'haya14busa/vim-migemo'
 let g:ctrlp_use_migemo = 1
 
-NeoBundle 'sandeepcr529/Buffet.vim'
 map <C-k> :Bufferlist<CR>
 command Bd Buffetdelete
 command Bot Buffetopentab
 command Boh Buffetopenh
 
 let g:unite_source_file_mru_limit = 100
-NeoBundle 'Shougo/neomru.vim'
 
-NeoBundle 'thinca/vim-quickrun'
 let g:quickrun_config = {}
 let g:quickrun_config.markdown = {
       \ 'outputter' : 'null',
@@ -318,10 +321,6 @@ let g:quickrun_config.markdown = {
       \ 'exec'      : '%c %o %a %s:p',
       \ }
 
-NeoBundle 'Shougo/tabpagebuffer.vim'
-
-NeoBundle 'Shougo/echodoc.vim'
-NeoBundle 'scrooloose/nerdtree'
 
 nnoremap <silent> ,uf :<C-u>Unite file_mru buffer<CR>
 call unite#custom_default_action('file', 'tabopen')
@@ -330,7 +329,6 @@ nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 if filereadable(expand('~/.vimrc_evervim'))
   source ~/.vimrc_evervim
 endif
-NeoBundle 'kakkyz81/evervim'
 nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
 nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
 nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
