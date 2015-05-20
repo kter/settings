@@ -208,7 +208,16 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'Shougo/echodoc.vim'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'kakkyz81/evervim'
+NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'tpope/vim-pathogen.git'
+if filereadable(expand('~/.vimrc_evervim'))
+  source ~/.vimrc_evervim
+  NeoBundle 'kakkyz81/evervim'
+  nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
+  nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
+  nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
+  nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
+endif
 
 " Required:
 call neobundle#end()
@@ -325,11 +334,18 @@ let g:quickrun_config.markdown = {
 nnoremap <silent> ,uf :<C-u>Unite file_mru buffer<CR>
 call unite#custom_default_action('file', 'tabopen')
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+nnoremap <silent> ,ul :<C-u>Unite file<CR>
 
-if filereadable(expand('~/.vimrc_evervim'))
-  source ~/.vimrc_evervim
-endif
-nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
-nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
-nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
-nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
+colorscheme desert
+colorscheme lucius
+
+autocmd! FileType markdown hi! def link markdownItalic LineNr
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
