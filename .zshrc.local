@@ -369,3 +369,6 @@ setopt SH_WORD_SPLIT
 # Ctrl-w‚Å/–ˆ‚Éíœ
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 alias diff="diff -c"
+
+autoload run-help
+HELPDIR=/usr/local/share/zsh/help

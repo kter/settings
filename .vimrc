@@ -350,3 +350,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 vnoremap * "zy:let @/ = @z<CR>n
+
+set undodir=$HOME/.vim/undo
+set undodir=$HOME/.vim/tmp
+

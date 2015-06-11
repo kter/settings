@@ -9,3 +9,7 @@ ln -fs $HOME/settings/.vimrc_evervim.sample $HOME/
 ln -fs $HOME/settings/.zsh/ $HOME/
 ln -fs $HOME/settings/.zshrc $HOME/
 ln -fs $HOME/settings/.zshrc.local $HOME/
+
+mkdir -p $HOME/.vim/undo
+mkdir -p $HOME/.vim/tmp
+
