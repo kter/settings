@@ -344,26 +344,18 @@ setopt EXTENDED_HISTORY
 
 case ${OSTYPE} in
   darwin*)
-    source /usr/local/share/zsh/site-functions
     export IPADDR=`/sbin/ifconfig en0 | grep 'inet ' | sed -e 's/^.*inet //' -e 's/ .*//'`
     export DOCKER_HOST=tcp://192.168.59.103:2376
     export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
     export DOCKER_TLS_VERIFY=1
+    source /usr/local/bin/aws_zsh_completer.sh
+    source /usr/local/share/zsh/site-functions/*
     ;;
   linux*)
     export IPADDR=`/sbin/ifconfig eth0 | grep 'inet addr:' | sed -e 's/^.*inet addr://' -e 's/ .*//'`
     ;;
 esac
 
-# aws zsh completer
-case ${OSTYPE} in
-  darwin*)
-    source /usr/local/bin/aws_zsh_completer.sh
-    source /usr/local/share/zsh/site-functions/*
-    ;;
-  linux*)
-    ;;
-esac
 setopt SH_WORD_SPLIT
 
 # Ctrl-wÇ≈/ñàÇ…çÌèú
