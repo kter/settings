@@ -6,6 +6,7 @@ set ruler
 set laststatus=2
 set hlsearch
 set nobackup
+set ts=2 sw=2 et
 highlight StatusLine term=bold cterm=bold ctermfg=black ctermbg=white
 " highlight LineNr ctermfg=grey
 highlight LineNr ctermfg=DarkCyan
@@ -210,6 +211,8 @@ NeoBundle 'Shougo/echodoc.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'tpope/vim-pathogen.git'
+" A Vim plugin for visually displaying indent levels in code
+NeoBundle 'nathanaelkane/vim-indent-guides'
 if filereadable(expand('~/.vimrc_evervim'))
   source ~/.vimrc_evervim
   NeoBundle 'kakkyz81/evervim'
@@ -354,3 +357,13 @@ vnoremap * "zy:let @/ = @z<CR>n
 set undodir=$HOME/.vim/undo
 set undodir=$HOME/.vim/tmp
 
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size = 1
+set background=dark
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+" set background=light
+" hi IndentGuidesOdd  ctermbg=white
+" hi IndentGuidesEven ctermbg=lightgrey
