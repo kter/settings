@@ -5,7 +5,6 @@ set number
 set ruler
 set laststatus=2
 set hlsearch
-set nobackup
 set ts=2 sw=2 et
 highlight StatusLine term=bold cterm=bold ctermfg=black ctermbg=white
 " highlight LineNr ctermfg=grey
@@ -315,8 +314,10 @@ nmap cc <Plug>(ToggleColorColumn)
 set formatoptions=q 
 
 " バックアップとテンポラリファイルを$HOME/.vim/tmpに保存
-set directory=$HOME/.vim/tmp
+set backup
 set backupdir=$HOME/.vim/tmp
+set swapfile
+set directory=$HOME/.vim/tmp
 
 " require brew install cmigemo
 let g:ctrlp_use_migemo = 1
