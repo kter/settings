@@ -198,7 +198,7 @@ NeoBundle 'taglist.vim'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
+" NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'taglist.vim'
 NeoBundle 'tpope/vim-rails'
@@ -217,14 +217,14 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'sjl/gundo.vim'
 " A Vim plugin which shows a git diff in the 'gutter' (sign column)
 NeoBundle 'airblade/vim-gitgutter'
-if filereadable(expand('~/.vimrc_evervim'))
-  source ~/.vimrc_evervim
-  NeoBundle 'kakkyz81/evervim'
-  nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
-  nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
-  nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
-  nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
-endif
+"if filereadable(expand('~/.vimrc_evervim'))
+"  source ~/.vimrc_evervim
+"  NeoBundle 'kakkyz81/evervim'
+"  nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
+"  nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
+"  nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
+"  nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
+"endif
 
 " Required:
 call neobundle#end()
