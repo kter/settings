@@ -213,7 +213,10 @@ NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'tpope/vim-pathogen.git'
 " A Vim plugin for visually displaying indent levels in code
 NeoBundle 'nathanaelkane/vim-indent-guides'
+" Gundo.vim is Vim plugin to visualize your Vim undo tree
 NeoBundle 'sjl/gundo.vim'
+" A Vim plugin which shows a git diff in the 'gutter' (sign column)
+NeoBundle 'airblade/vim-gitgutter'
 if filereadable(expand('~/.vimrc_evervim'))
   source ~/.vimrc_evervim
   NeoBundle 'kakkyz81/evervim'
