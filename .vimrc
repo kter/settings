@@ -213,6 +213,7 @@ NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'tpope/vim-pathogen.git'
 " A Vim plugin for visually displaying indent levels in code
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'sjl/gundo.vim'
 if filereadable(expand('~/.vimrc_evervim'))
   source ~/.vimrc_evervim
   NeoBundle 'kakkyz81/evervim'
@@ -369,4 +370,7 @@ hi IndentGuidesEven ctermbg=darkgrey
 " hi IndentGuidesEven ctermbg=lightgrey
 
 " NERDTree
-nnoremap <silent> ,un :<C-u>NERDTreeToggle<CR>
+nnoremap <silent> ,ne :<C-u>NERDTreeToggle<CR>
+
+" gundo.vim
+nnoremap <silent> ,gu :<C-u>GundoToggle<CR>
