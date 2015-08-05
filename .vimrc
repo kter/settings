@@ -367,3 +367,6 @@ hi IndentGuidesEven ctermbg=darkgrey
 " set background=light
 " hi IndentGuidesOdd  ctermbg=white
 " hi IndentGuidesEven ctermbg=lightgrey
+
+" NERDTree
+nnoremap <silent> ,un :<C-u>NERDTreeToggle<CR>
