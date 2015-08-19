@@ -224,6 +224,7 @@ NeoBundle 'airblade/vim-gitgutter'
 "  nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
 "  nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
 "endif
+NeoBundle 'wakatime/vim-wakatime'
 
 " Required:
 call neobundle#end()
