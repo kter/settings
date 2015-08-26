@@ -361,6 +361,9 @@ setopt SH_WORD_SPLIT
 # Ctrl-w‚Å/–ˆ‚Éíœ
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 alias diff="diff -c"
+alias g="git"
+alias gst="git status"
+alias gcm="git commit"
 
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
