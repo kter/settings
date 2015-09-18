@@ -204,7 +204,6 @@ NeoBundle 'tpope/vim-rails'
 NeoBundle 'haya14busa/vim-migemo'
 NeoBundle 'sandeepcr529/Buffet.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'Shougo/echodoc.vim'
 NeoBundle 'scrooloose/nerdtree'
@@ -215,7 +214,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 " Gundo.vim is Vim plugin to visualize your Vim undo tree
 NeoBundle 'sjl/gundo.vim'
 " A Vim plugin which shows a git diff in the 'gutter' (sign column)
-NeoBundle 'airblade/vim-gitgutter'
+"NeoBundle 'airblade/vim-gitgutter'
 "if filereadable(expand('~/.vimrc_evervim'))
 "  source ~/.vimrc_evervim
 "  NeoBundle 'kakkyz81/evervim'
@@ -225,6 +224,8 @@ NeoBundle 'airblade/vim-gitgutter'
 "  nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
 "endif
 NeoBundle 'wakatime/vim-wakatime'
+NeoBundle 'thinca/vim-quickrun'
+let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
 " Required:
 call neobundle#end()
