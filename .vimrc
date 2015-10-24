@@ -5,7 +5,7 @@ set number
 set ruler
 set laststatus=2
 set hlsearch
-set nobackup
+set ts=2 sw=2 et
 highlight StatusLine term=bold cterm=bold ctermfg=black ctermbg=white
 " highlight LineNr ctermfg=grey
 highlight LineNr ctermfg=DarkCyan
@@ -197,27 +197,35 @@ NeoBundle 'taglist.vim'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
+" NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'taglist.vim'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'haya14busa/vim-migemo'
 NeoBundle 'sandeepcr529/Buffet.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'Shougo/echodoc.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic.git'
 NeoBundle 'tpope/vim-pathogen.git'
-if filereadable(expand('~/.vimrc_evervim'))
-  source ~/.vimrc_evervim
-  NeoBundle 'kakkyz81/evervim'
-  nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
-  nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
-  nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
-  nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
-endif
+" A Vim plugin for visually displaying indent levels in code
+NeoBundle 'nathanaelkane/vim-indent-guides'
+" Gundo.vim is Vim plugin to visualize your Vim undo tree
+NeoBundle 'sjl/gundo.vim'
+" A Vim plugin which shows a git diff in the 'gutter' (sign column)
+"NeoBundle 'airblade/vim-gitgutter'
+"if filereadable(expand('~/.vimrc_evervim'))
+"  source ~/.vimrc_evervim
+"  NeoBundle 'kakkyz81/evervim'
+"  nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
+"  nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
+"  nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
+"  nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
+"endif
+NeoBundle 'wakatime/vim-wakatime'
+NeoBundle 'thinca/vim-quickrun'
+let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
 " Required:
 call neobundle#end()
@@ -308,8 +316,10 @@ nmap cc <Plug>(ToggleColorColumn)
 set formatoptions=q 
 
 " バックアップとテンポラリファイルを$HOME/.vim/tmpに保存
-set directory=$HOME/.vim/tmp
+set backup
 set backupdir=$HOME/.vim/tmp
+set swapfile
+set directory=$HOME/.vim/tmp
 
 " require brew install cmigemo
 let g:ctrlp_use_migemo = 1
@@ -350,3 +360,26 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 vnoremap * "zy:let @/ = @z<CR>n
+
+set undodir=$HOME/.vim/undo
+set undodir=$HOME/.vim/tmp
+
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size = 1
+set background=dark
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+" set background=light
+" hi IndentGuidesOdd  ctermbg=white
+" hi IndentGuidesEven ctermbg=lightgrey
+
+" NERDTree
+nnoremap <silent> ,ne :<C-u>NERDTreeToggle<CR>
+
+" gundo.vim
+nnoremap <silent> ,gu :<C-u>GundoToggle<CR>
+
+" vim-markdown
+let g:vim_markdown_folding_disabled=1

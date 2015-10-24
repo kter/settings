@@ -1,4 +1,4 @@
-set guifont=Droid\ Sans\ Mono\ for\ Powerline:h14
+set guifont=Ricty\ Regular\ for\ Powerline:h14
 colorscheme lucius
 
 ".gvimrc カラー設定
