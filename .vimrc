@@ -383,3 +383,6 @@ nnoremap <silent> ,gu :<C-u>GundoToggle<CR>
 
 " vim-markdown
 let g:vim_markdown_folding_disabled=1
+
+" to edit crontab
+set backupskip=/tmp/*,/private/tmp/*
