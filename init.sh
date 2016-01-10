@@ -1,14 +1,17 @@
 #!/bin/bash
 
-ln -fs .gitignore $HOME/
-ln -fs .gvimrc $HOME/
-ln -fs .irbrc $HOME/
-ln -fs .tmux.conf $HOME/
-ln -fs .vimrc $HOME/
-ln -fs .vimrc_evervim.sample $HOME/
-ln -fs .zsh/ $HOME/
-ln -fs .zshrc $HOME/
-ln -fs .zshrc.local $HOME/
+#abspath="$(cd $(dirname $file) && pwd)/$(basename $file)"
+file=`echo $0`
+
+ln -fs $(dirname $file)/.gitignore $HOME/
+ln -fs $(dirname $file)/.gvimrc $HOME/
+ln -fs $(dirname $file)/.irbrc $HOME/
+ln -fs $(dirname $file)/.tmux.conf $HOME/
+ln -fs $(dirname $file)/.vimrc $HOME/
+ln -fs $(dirname $file)/.vimrc_evervim.sample $HOME/
+ln -fs $(dirname $file)/.zsh/ $HOME/
+ln -fs $(dirname $file)/.zshrc $HOME/
+ln -fs $(dirname $file)/.zshrc.local $HOME/
 
 mkdir -p $HOME/.vim/undo
 mkdir -p $HOME/.vim/tmp
