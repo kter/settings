@@ -225,6 +225,9 @@ NeoBundle 'sjl/gundo.vim'
 "endif
 NeoBundle 'wakatime/vim-wakatime'
 NeoBundle 'thinca/vim-quickrun'
+" Vim features a :mksession command to write a file containing the current state of Vim
+NeoBundle 'tpope/vim-obsession'
+
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
 " Required:
