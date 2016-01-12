@@ -371,7 +371,7 @@ source ~/.zplug/zplug
 # Set priority to load command like a nice command
 # e.g., zsh-syntax-highlighting must be loaded
 # after executing compinit command and sourcing other plugins
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", nice:19
 
 zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
 zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
@@ -379,9 +379,6 @@ zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
 zplug "mollifier/anyframe"
 
 zplug "b4b4r07/enhancd", of:enhancd.sh
-
-# compinit 以降に読み込むようにロードの優先度を変更する（10~19にすれば良い）
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
 zplug "zsh-users/zsh-completions"
 
