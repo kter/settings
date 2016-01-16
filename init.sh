@@ -16,3 +16,6 @@ ln -fs $(dirname $file)/.zshrc.local $HOME/
 mkdir -p $HOME/.vim/undo
 mkdir -p $HOME/.vim/tmp
 
+curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+curl -fLo ~/.zplug/zplug --create-dirs https://git.io/zplug
