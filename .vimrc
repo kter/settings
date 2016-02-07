@@ -356,14 +356,16 @@ colorscheme lucius
 
 autocmd! FileType markdown hi! def link markdownItalic LineNr
 
+" syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 2
+
 vnoremap * "zy:let @/ = @z<CR>n
 
 set undodir=$HOME/.vim/undo
@@ -398,3 +400,6 @@ let g:neosnippet#snippets_directory = [
       \'~/.vim/snippets',
       \'~/.vim/bundle/serverspec-snippets',
       \]
+
+" vim-tags
+let g:vim_tags_auto_generate = 1
