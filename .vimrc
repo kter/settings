@@ -299,7 +299,6 @@ let g:neocomplcache_enable_at_startup = 1
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 
 " taglist
 :set tags=tags
@@ -358,6 +357,7 @@ autocmd! FileType markdown hi! def link markdownItalic LineNr
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{ObsessionStatus()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
