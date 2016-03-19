@@ -324,8 +324,8 @@ VIMRUNTIME=$HOME/.vim/bundle/
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/bin/
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+PATH=/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/bin/
+MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
 alias date2ut='date +%s --date'
 # strftime includes gawk
