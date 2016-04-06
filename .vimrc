@@ -403,3 +403,7 @@ let g:neosnippet#snippets_directory = [
 
 " vim-tags
 let g:vim_tags_auto_generate = 1
+
+" 検索時に該当行が画面中央に来るようにする
+map n nzz
+map N Nzz
