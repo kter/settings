@@ -200,7 +200,6 @@ NeoBundle 'kannokanno/previm'
 " NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'taglist.vim'
-NeoBundle 'tpope/vim-rails'
 NeoBundle 'haya14busa/vim-migemo'
 NeoBundle 'sandeepcr529/Buffet.vim'
 NeoBundle 'Shougo/neomru.vim'
@@ -407,3 +406,6 @@ let g:vim_tags_auto_generate = 1
 " 検索時に該当行が画面中央に来るようにする
 map n nzz
 map N Nzz
+
+" Railsのprivate以下はインデント付ける
+let g:ruby_indent_access_modifier_style="indent"
