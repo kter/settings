@@ -228,6 +228,12 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-obsession'
 " snippets of serverspec
 NeoBundle 'glidenote/serverspec-snippets'
+" list of Outline, Method
+NeoBundle 'Shougo/unite-outline'
+" Python indent
+NeoBundle 'hynek/vim-python-pep8-indent'
+" Lint
+NeoBundleInstall 'andviro/flake8-vim'
 
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
@@ -409,3 +415,19 @@ map N Nzz
 
 " Railsのprivate以下はインデント付ける
 let g:ruby_indent_access_modifier_style="indent"
+
+" Python
+autocmd FileType python setl autoindent
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd FileType python setl tabstop=8 expandtab shiftwidth=4 softtabstop=4
+
+" unite-outline display right side
+let g:unite_split_rule = 'botright'
+noremap ,uo <ESC>:Unite -vertical -winwidth=40 outline<Return>
+
+" flake8-vim
+let g:PyFlakeOnWrite = 1
+
+" quickrun
+let g:quickrun_config={'*': {'split': ''}}
+set splitbelow
