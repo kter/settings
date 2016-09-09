@@ -393,3 +393,6 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
+
+# iTerm2
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
