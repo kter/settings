@@ -330,6 +330,11 @@ set directory=$HOME/.vim/tmp
 
 " require brew install cmigemo
 let g:ctrlp_use_migemo = 1
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn)|vendor\/bundle)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 map <C-k> :Bufferlist<CR>
 command Bd Buffetdelete
