@@ -324,7 +324,7 @@ VIMRUNTIME=$HOME/.vim/bundle/
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-PATH=/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/bin/
+PATH=/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/bin/:/usr/local/share/git-core/contrib/diff-highlight
 MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
 alias date2ut='date +%s --date'

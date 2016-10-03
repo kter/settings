@@ -19,3 +19,8 @@ mkdir -p $HOME/.vim/tmp
 curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl -sL zplug.sh/installer | zsh
+
+git config --global pager.log 'diff-highlight | less'
+git config --global pager.show 'diff-highlight | less'
+git config --global pager.diff 'diff-highlight | less'
+git config --global diff.compactionHeuristic true
