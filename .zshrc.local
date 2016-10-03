@@ -366,8 +366,9 @@ alias gcm="git commit"
 autoload run-help
 HELPDIR=/usr/local/share/zsh/help
 
-# curl -fLo ~/.zplug/zplug --create-dirs https://git.io/zplug
-source ~/.zplug/zplug
+# zplug
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
 # Set priority to load command like a nice command
 # e.g., zsh-syntax-highlighting must be loaded
@@ -396,3 +397,4 @@ zplug load --verbose
 
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
