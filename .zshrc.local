@@ -398,3 +398,7 @@ zplug load --verbose
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+# ’PŒê‚²‚Æ‚ÌˆÚ“®
+bindkey '^t' forward-word
+bindkey '^n' backward-word
