@@ -402,3 +402,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # 単語ごとの移動
 bindkey '^k' forward-word
 bindkey '^t' backward-word
+
+# シンボリックリンクも経さんに含める
+alias du="du -L"
