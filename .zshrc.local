@@ -398,7 +398,10 @@ zplug load --verbose
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
+eval "$(rbenv init -)"
 
 # ’PŒê‚²‚Æ‚ÌˆÚ“®
-bindkey '^t' forward-word
-bindkey '^n' backward-word
+bindkey '^k' forward-word
+bindkey '^t' backward-word
