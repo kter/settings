@@ -232,6 +232,8 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'hynek/vim-python-pep8-indent'
 " Lint
 NeoBundle 'andviro/flake8-vim'
+" javascript
+NeoBundle 'pangloss/vim-javascript'
 
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
@@ -434,3 +436,5 @@ let g:PyFlakeOnWrite = 1
 " quickrun
 let g:quickrun_config={'*': {'split': ''}}
 set splitbelow
+set list
+set listchars=tab:»-,trail:-,nbsp:%,eol:$
