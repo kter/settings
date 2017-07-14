@@ -398,6 +398,9 @@ HELPDIR=/usr/local/share/zsh/help
 # iTerm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
+eval "$(rbenv init -)"
 
 # ’PŒê‚²‚Æ‚ÌˆÚ“®
 bindkey '^k' forward-word
