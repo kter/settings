@@ -405,3 +405,13 @@ bindkey '^t' backward-word
 
 # シンボリックリンクも経さんに含める
 alias du="du -L"
+
+# pet
+function pet-select() {
+  BUFFER=$(pet search --query "$LBUFFER")
+    CURSOR=$#BUFFER
+      zle redisplay
+}
+zle -N pet-select
+bindkey '^s' pet-select
+
