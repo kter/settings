@@ -190,7 +190,8 @@ NeoBundle 'Shougo/vimproc', {
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ }
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'taglist.vim'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'plasticboy/vim-markdown'
@@ -220,7 +221,6 @@ NeoBundle 'sjl/gundo.vim'
 "  nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
 "  nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
 "endif
-NeoBundle 'wakatime/vim-wakatime'
 NeoBundle 'thinca/vim-quickrun'
 " Vim features a :mksession command to write a file containing the current state of Vim
 NeoBundle 'tpope/vim-obsession'
@@ -302,8 +302,10 @@ let g:neocomplcache_enable_at_startup = 1
 
 
 " airline
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='hybridline'
+let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
 
 " taglist
 :set tags=tags
