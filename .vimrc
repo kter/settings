@@ -234,6 +234,7 @@ NeoBundle 'hynek/vim-python-pep8-indent'
 NeoBundle 'andviro/flake8-vim'
 " javascript
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'tpope/vim-surround'
 
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
