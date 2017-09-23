@@ -441,3 +441,14 @@ let g:quickrun_config={'*': {'split': ''}}
 set splitbelow
 set list
 set listchars=tab:»-,trail:-,nbsp:%,eol:$
+
+" 現在開いているファイルを実行 (only php|ruby|go)
+function! ExecuteCurrentFile()
+  if &filetype == 'php' || &filetype == 'ruby'
+    exe '!' . &filetype . ' %'
+  endif
+  if &filetype == 'go'
+    exe '!go run *.go'
+  endif
+endfunction
+nnoremap <Space> :call ExecuteCurrentFile()<CR>
