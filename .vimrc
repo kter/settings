@@ -326,4 +326,3 @@ function! ExecuteCurrentFile()
   endif
 endfunction
 nnoremap <Space> :call ExecuteCurrentFile()<CR>
-

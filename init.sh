@@ -12,11 +12,11 @@ ln -fs $(dirname $file)/.vimrc_evervim.sample $HOME/
 ln -fs $(dirname $file)/.zsh/ $HOME/
 ln -fs $(dirname $file)/.zshrc $HOME/
 ln -fs $(dirname $file)/.zshrc.local $HOME/
+ln -fs $(dirname $file)/.vim $HOME/
 
 mkdir -p $HOME/.vim/undo
 mkdir -p $HOME/.vim/tmp
 
-curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl -sL zplug.sh/installer | zsh
 
