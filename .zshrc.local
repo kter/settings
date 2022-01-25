@@ -324,7 +324,7 @@ VIMRUNTIME=$HOME/.vim/bundle/
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
-PATH=/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/bin/:/usr/local/share/git-core/contrib/diff-highlight
+PATH=/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:$PATH:$HOME/bin/:/usr/local/share/git-core/contrib/diff-highlight:$HOME/go/bin:/opt/homebrew/share/git-core/contrib/diff-highlight/
 MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
 alias date2ut='date +%s --date'
@@ -346,8 +346,7 @@ setopt EXTENDED_HISTORY
 case ${OSTYPE} in
   darwin*)
     export IPADDR=`/sbin/ifconfig en0 | grep 'inet ' | sed -e 's/^.*inet //' -e 's/ .*//'`
-    source /usr/local/bin/aws_zsh_completer.sh
-    source /usr/local/share/zsh/site-functions/*
+    source /opt/homebrew/share/zsh/site-functions
     ;;
   linux*)
     export IPADDR=`/sbin/ifconfig eth0 | grep 'inet addr:' | sed -e 's/^.*inet addr://' -e 's/ .*//'`
