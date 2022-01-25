@@ -1,5 +1,4 @@
 scriptencoding utf-8
-" curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh | sh
 set encoding=utf-8
 set number
 set ruler
@@ -153,104 +152,6 @@ set expandtab
 map <C-M> :buffers<CR>
 map <C-I> :vertical diffsplit
 
-"NeoBundle Scripts-----------------------------
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-
-" Required:
-set runtimepath+=/Users/ttakahashi/.vim/bundle/neobundle.vim/
-
-" Required:
-call neobundle#begin(expand('/Users/ttakahashi/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-
-" My Bundles here:
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'basyura/unite-rails'
-NeoBundle 'szw/vim-tags'
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'taglist.vim'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-" NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'jonathanfilip/vim-lucius'
-NeoBundle 'taglist.vim'
-NeoBundle 'haya14busa/vim-migemo'
-NeoBundle 'sandeepcr529/Buffet.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/tabpagebuffer.vim'
-NeoBundle 'Shougo/echodoc.vim'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic.git'
-NeoBundle 'tpope/vim-pathogen.git'
-" A Vim plugin for visually displaying indent levels in code
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" Gundo.vim is Vim plugin to visualize your Vim undo tree
-NeoBundle 'sjl/gundo.vim'
-" A Vim plugin which shows a git diff in the 'gutter' (sign column)
-"NeoBundle 'airblade/vim-gitgutter'
-"if filereadable(expand('~/.vimrc_evervim'))
-"  source ~/.vimrc_evervim
-"  NeoBundle 'kakkyz81/evervim'
-"  nnoremap <silent> ,ec :<C-u>EvervimCreateNote<CR>
-"  nnoremap <silent> ,es :<C-u>EvervimSearchByQuery<Space>
-"  nnoremap <silent> ,el :<C-u>EvervimNotebookList<CR> 
-"  nnoremap <silent> ,et :<C-u>EvervimListTags<CR>
-"endif
-NeoBundle 'thinca/vim-quickrun'
-" Vim features a :mksession command to write a file containing the current state of Vim
-NeoBundle 'tpope/vim-obsession'
-" snippets of serverspec
-NeoBundle 'glidenote/serverspec-snippets'
-" list of Outline, Method
-NeoBundle 'Shougo/unite-outline'
-" Python indent
-NeoBundle 'hynek/vim-python-pep8-indent'
-" Lint
-NeoBundle 'andviro/flake8-vim'
-" javascript
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'tpope/vim-surround'
-
-let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
-
-" Required:
-call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
-
-" neocomplcache Installation
-let g:neocomplcache_enable_at_startup = 1
 
 "vim tab
 
@@ -299,14 +200,7 @@ map <silent> [Tag]n :tabnext<CR>
 " tn 次のタブ
 map <silent> [Tag]p :tabprevious<CR>
 " tp 前のタブ
-let g:neocomplcache_enable_at_startup = 1
 
-
-" airline
-" let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='hybridline'
-let g:airline_section_z = airline#section#create(['%{ObsessionStatus(''$'', '''')}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
 
 " taglist
 :set tags=tags
@@ -359,25 +253,12 @@ let g:quickrun_config.markdown = {
 
 
 nnoremap <silent> ,uf :<C-u>Unite file_mru buffer<CR>
-call unite#custom_default_action('file', 'tabopen')
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 nnoremap <silent> ,ul :<C-u>Unite file<CR>
 
 colorscheme desert
-colorscheme lucius
 
 autocmd! FileType markdown hi! def link markdownItalic LineNr
-
-" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%{ObsessionStatus()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 2
 
 vnoremap * "zy:let @/ = @z<CR>n
 
@@ -406,13 +287,6 @@ let g:vim_markdown_folding_disabled=1
 
 " to edit crontab
 set backupskip=/tmp/*,/private/tmp/*
-
-" serverspec-snippets directory
-" Usage :set ft=ruby.serverspec
-let g:neosnippet#snippets_directory = [
-      \'~/.vim/snippets',
-      \'~/.vim/bundle/serverspec-snippets',
-      \]
 
 " vim-tags
 let g:vim_tags_auto_generate = 1
@@ -453,5 +327,3 @@ function! ExecuteCurrentFile()
 endfunction
 nnoremap <Space> :call ExecuteCurrentFile()<CR>
 
-" enable pathgon
-execute pathogen#infect()
