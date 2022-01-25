@@ -153,21 +153,21 @@ set expandtab
 map <C-M> :buffers<CR>
 map <C-I> :vertical diffsplit
 
-
 "NeoBundle Scripts-----------------------------
-if has('vim_starting')
+if &compatible
   set nocompatible               " Be iMproved
-
-  " Required:
-  set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
 endif
 
 " Required:
-call neobundle#begin(expand('$HOME/.vim/bundle'))
+set runtimepath+=/Users/ttakahashi/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('/Users/ttakahashi/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
+
 
 " My Bundles here:
 NeoBundle 'Shougo/neosnippet.vim'
